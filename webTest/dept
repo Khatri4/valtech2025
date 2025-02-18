@@ -1,0 +1,18 @@
+create table dept(id integer primary key, name varchar(20), location varchar(20));
+insert into dept(id, name, location) values(1,'HR', 'BLR'), (2,'HR', 'ABD');
+select * from dept;
+
+select id,name,location from dept where id = (select min(id) from dept); -- first
+select id,name,location from dept where id = (select max(id) from dept); --last
+select id,name,location from dept where id = (select min(id) from dept where id > ?)
+
+
+alter table employee add column deptID integer, add constraint fk_dID foreign key (deptID) references
+dept(id);
+
+select * from employee;
+update employee set deptid = 1 where id = 1;
+update employee set deptid = 2 where id = 2;
+
+
+select count(*) from dept;
