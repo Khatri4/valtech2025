@@ -1,9 +1,14 @@
 package spring.assignment;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 @Entity
@@ -21,6 +26,8 @@ public class Item {
 	private int maxQuantity;
 	
 	
+	@OneToMany(targetEntity = LineItem.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "item")
+	private Set<LineItem> getLineItems;
 	
 	
 	public Item() {}

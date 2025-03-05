@@ -1,16 +1,27 @@
 package spring.assignment;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="customer_info")
 public class Customer {
+	public enum CustomerStatus{
+		ENABLE, DISABLE
+	}
 
 	@Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cusseq")
 	@SequenceGenerator(name = "cusseq", sequenceName = "cus_req", allocationSize = 1, initialValue = 1)
@@ -22,6 +33,14 @@ public class Customer {
 	private String per_address;
 	
 	
+	@Enumerated(EnumType.STRING)
+	private CustomerStatus cusStatus=CustomerStatus.ENABLE;
+	
+
+	
+	
+	@OneToMany(targetEntity = Order.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "customer")
+	private Set<Order> orders;
 	
 	
 	public Customer() {}
@@ -32,14 +51,28 @@ public class Customer {
 		this.age = age;
 		this.address = address;
 		this.per_address = per_address;
+		this.cusStatus = CustomerStatus.ENABLE;
 	}
 	
-	
-	
+
+//	public Customer(String name, int age, String address, String per_address, CustomerStatus cusStatus) {
+//		this.name = name;
+//		this.age = age;
+//		this.address = address;
+//		this.per_address = per_address;
+//		this.cusStatus = cusStatus.ENABLE;
+//	}
 	@Override
 	public String toString() {
 		return "Customer [cusId=" + cusId + ", name=" + name + ", age=" + age + ", address=" + address
-				+ ", per_address=" + per_address + "]";
+				+ ", per_address=" + per_address + ", cusStatus=" + cusStatus + ", orders=" + orders + "]";
+	}
+	public CustomerStatus getCusStatus() {
+		return cusStatus;
+	}
+	
+	public void setCusStatus(CustomerStatus cusStatus) {
+		this.cusStatus = cusStatus;
 	}
 	
 	public int getCusId() {
@@ -71,6 +104,13 @@ public class Customer {
 	}
 	public void setPer_address(String per_address) {
 		this.per_address = per_address;
+	}
+	
+	public Set<Order> getOrders() {
+		return orders;
+	}
+	public void setOrders(Set<Order> orders) {
+		this.orders = orders;
 	}
 	
 	

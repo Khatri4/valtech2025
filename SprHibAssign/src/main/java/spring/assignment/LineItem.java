@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-public class LineItems {
+public class LineItem {
 	
 	
 	@Id
@@ -32,8 +32,8 @@ public class LineItems {
 	private Order order;
 
 	
-	public LineItems() {}
-	public LineItems(int quantity) {
+	public LineItem() {}
+	public LineItem(int quantity) {
 		this.quantity = quantity;
 	}
 	

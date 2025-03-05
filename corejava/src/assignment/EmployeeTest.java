@@ -9,11 +9,23 @@ import java.util.Map;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import assignment.Employee.Gender;
 class EmployeeTest {
 	
+	private EmployeeService empService;
+
+    @BeforeEach
+    void setUp() {
+        empService = new EmployeeServiceImpl();  
+    }
+	
+//	public EmployeeTest(EmployeeService empService) {
+//        this.empService = empService;
+//    }
+//	
 //	method for adding employees
 	private List<Employee> addEmployees() {
 		List<Employee> employees = new ArrayList<Employee>();
@@ -64,7 +76,7 @@ class EmployeeTest {
 
 
 	
-	
+
 	
 	@Test
 	void testHashCode() {
@@ -86,67 +98,69 @@ class EmployeeTest {
 		assertFalse(e1.equals(e3));
 		assertTrue(e1.equals(e2));
 	}
+		
+	List<Employee> employees = addEmployees();
+	
 	
 	@Test
-	void testStreamApi() {
-		
-		List<Employee> employees = addEmployees();
-		
-
-//		emp by level
-		List<Employee> myNewEmp = employees.stream().filter(employee -> employee.getLevel()==2).collect(Collectors.toList());
+	void testEmpById() {
+		List<Employee> myNewEmp = empService.getEmpById(employees, 2);
+		assertEquals("Arya", myNewEmp.get(0).getName());
+	}
+	
+	
+	@Test
+	void testEmpByLevel() {
+		List<Employee> myNewEmp = empService.getEmpByLevel(employees, 2);
 		System.out.println(myNewEmp);
-		double totalSalary = myNewEmp.stream()
-			    .mapToDouble(Employee::getSalary)
-			    .sum();
+		double totalSalary = empService.getSumOfSalary(myNewEmp);
 		System.out.println("Total Salary: "+totalSalary);
 		
 		assertEquals(1100000.0, totalSalary);
 		assertNotEquals(1101000.0, totalSalary);
-		
-		
-//		emp by gender
-		List<Employee> myNewEmp1 = employees.stream().filter(employee -> employee.getGender()==Gender.FEMALE).collect(Collectors.toList());
+	}
+	
+	
+	@Test
+	void testEmpByGender() {
+		List<Employee> myNewEmp1 = empService.getEmpByGender(employees, Gender.FEMALE);
 		System.out.println(myNewEmp1);
-		double totalSalary1 = myNewEmp1.stream()
-			    .mapToDouble(Employee::getSalary)
-			    .sum();
+		double totalSalary1 = empService.getSumOfSalary(myNewEmp1);
 		System.out.println("Total Salary: "+totalSalary1);
 		
 		assertEquals(1600000.0, totalSalary1);
 		assertNotEquals(1601000.0, totalSalary1);
-		
-		
-//		emp by name
-		List<Employee> myNewEmp2 = employees.stream().filter(employee -> employee.getName().contains("i")).collect(Collectors.toList());
+	}
+	
+	
+	@Test
+	void testEmpByName() {
+		List<Employee> myNewEmp2 = empService.getEmpByName(employees, "i"); 
 		System.out.println("------------------"+myNewEmp2);
-		double totalSalary2 = myNewEmp2.stream()
-			    .mapToDouble(Employee::getSalary)
-			    .sum();
+		double totalSalary2 = empService.getSumOfSalary(myNewEmp2);
 		System.out.println("Total Salary 2: "+totalSalary2);
 		
 		assertEquals(2400000.0, totalSalary2);
 		assertNotEquals(2410000.0, totalSalary2);
-		
-		
-//		emp by level and gender
-		List<Employee> myNewEmp3 = employees.stream().filter(employee -> employee.getGender()==Gender.MALE && employee.getLevel()==1).collect(Collectors.toList());
+	}
+	
+	@Test
+	void testEmpByLevelAndGender() {
+		List<Employee> myNewEmp3 = empService.getEmpByLevelAndGender(employees, 1, Gender.MALE);
 		System.out.println(myNewEmp3);
-		double totalSalary3 = myNewEmp3.stream()
-			    .mapToDouble(Employee::getSalary)
-			    .sum();
+		double totalSalary3 = empService.getSumOfSalary(myNewEmp3);
 		System.out.println("Total Salary 3: "+ totalSalary3);
 		
 		assertEquals(1900000.0, totalSalary3);
 		assertNotEquals(1910000.0, totalSalary3);
-		
-		
-//		emp by ignore case
-		List<Employee> myNewEmp4 = employees.stream().filter(employee -> !employee.getName().contains("e")).collect(Collectors.toList());
+	}
+	
+	
+	@Test
+	void testEmpByIgnoreCase() {
+		List<Employee> myNewEmp4 = empService.getEmpByIgnoreCase(employees, "e");
 		System.out.println("------------------"+myNewEmp4);
-		double totalSalary4 = myNewEmp4.stream()
-			    .mapToDouble(Employee::getSalary)
-			    .sum();
+		double totalSalary4 = empService.getSumOfSalary(myNewEmp4);
 		System.out.println("Total Salary 4: "+totalSalary4);
 		
 		assertEquals(3702000.0, totalSalary4);
@@ -156,3 +170,63 @@ class EmployeeTest {
 	
 
 }
+
+
+
+
+
+//@Test
+//void testStreamApi() {		
+//	List<Employee> employees = addEmployees();
+//	
+//	
+//
+////	emp by level
+//	List<Employee> myNewEmp = empService.getEmpByLevel(employees, 2);
+//	System.out.println(myNewEmp);
+//	double totalSalary = empService.getSumOfSalary(myNewEmp);
+//	System.out.println("Total Salary: "+totalSalary);
+//	
+//	assertEquals(1100000.0, totalSalary);
+//	assertNotEquals(1101000.0, totalSalary);
+//	
+//	
+////	emp by gender
+//	List<Employee> myNewEmp1 = empService.getEmpByGender(employees, Gender.FEMALE);
+//	System.out.println(myNewEmp1);
+//	double totalSalary1 = empService.getSumOfSalary(myNewEmp1);
+//	System.out.println("Total Salary: "+totalSalary1);
+//	
+//	assertEquals(1600000.0, totalSalary1);
+//	assertNotEquals(1601000.0, totalSalary1);
+//
+//	
+////	emp by name
+//	List<Employee> myNewEmp2 = empService.getEmpByName(employees, "i"); 
+//	System.out.println("------------------"+myNewEmp2);
+//	double totalSalary2 = empService.getSumOfSalary(myNewEmp2);
+//	System.out.println("Total Salary 2: "+totalSalary2);
+//	
+//	assertEquals(2400000.0, totalSalary2);
+//	assertNotEquals(2410000.0, totalSalary2);
+//
+//	
+////	emp by level and gender
+//	List<Employee> myNewEmp3 = empService.getEmpByLevelAndGender(employees, 1, Gender.MALE);
+//	System.out.println(myNewEmp3);
+//	double totalSalary3 = empService.getSumOfSalary(myNewEmp3);
+//	System.out.println("Total Salary 3: "+ totalSalary3);
+//	
+//	assertEquals(1900000.0, totalSalary3);
+//	assertNotEquals(1910000.0, totalSalary3);
+//
+//	
+////	emp by ignore case
+//	List<Employee> myNewEmp4 = empService.getEmpByIgnoreCase(employees, "e");
+//	System.out.println("------------------"+myNewEmp4);
+//	double totalSalary4 = empService.getSumOfSalary(myNewEmp4);
+//	System.out.println("Total Salary 4: "+totalSalary4);
+//	
+//	assertEquals(3702000.0, totalSalary4);
+//	assertNotEquals(2410000.0, totalSalary4);
+//}

@@ -7,6 +7,8 @@ import dao.Employee;
 import dao.Employee.Gender;
 import dao.EmployeeDAO;
 import dao.EmployeeDAOImpl;
+import dao.EmployeeService;
+import dao.EmployeeServiceImpl;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -19,10 +21,12 @@ import jakarta.servlet.http.HttpServletResponse;
 public class EmployeesServlet extends HttpServlet {
 	
 	private EmployeeDAO dao;
+	private EmployeeService empService;
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		dao = new EmployeeDAOImpl(config.getServletContext());
+		empService = new EmployeeServiceImpl(dao);
 	}
 	
 	@Override
@@ -62,37 +66,41 @@ public class EmployeesServlet extends HttpServlet {
 			if (sortBy == null) {
 		        sortBy = "id";
 		    }
+			
+			List<Employee> emp = dao.getAll();
 			List<Employee> employees = null;
 //			if("sorting".equals(operation)) {
 				switch (sortBy) {
 	            case "id":
-	                employees = dao.sortById(sortOrder);
+	                employees = empService.sortById(sortOrder, emp);
 	                break;
 	            case "name":
-	                employees = dao.sortByName(sortOrder);
+	                employees = empService.sortByName(sortOrder, emp);
 	                break;
 	            case "age":
-	                employees = dao.sortByAge(sortOrder);
+	                employees = empService.sortByAge(sortOrder, emp);
 	                break;
 	            case "gender":
-	                employees = dao.sortByGender(sortOrder);
+	                employees = empService.sortByGender(sortOrder, emp);
 	                break;
 	            case "salary":
-	                employees = dao.sortBySalary(sortOrder);
+	                employees = empService.sortBySalary(sortOrder, emp);
 	                break;
 	            case "experience":
-	                employees = dao.sortByExperience(sortOrder);
+	                employees = empService.sortByExperience(sortOrder, emp);
 	                break;
 	            case "level":
-	                employees = dao.sortByLevel(sortOrder);
+	                employees = empService.sortByLevel(sortOrder, emp);
 	                break;
 	            case "deptid":
-	                employees = dao.sortByDeptid(sortOrder);
+	                employees = empService.sortByDeptid(sortOrder, emp);
 	                break;    
 	            default:
-	                employees = dao.sortById(sortOrder); 
+	                employees = empService.sortById(sortOrder, emp); 
 	                break;
 	        }
+			
+			
 //			}
 //			employees = dao.sortById(sortOrder);
 //			employees = dao.sortByName(sortOrder);
@@ -117,47 +125,47 @@ public class EmployeesServlet extends HttpServlet {
 		
 //		employees by search
 		if("greaterThanSal".equals(searchBy)) {
-			req.setAttribute("emps", dao.getEmpBySalary(searchBy, Integer.parseInt(search)));
+			req.setAttribute("emps", empService.getEmpBySalary(searchBy, Integer.parseInt(search)));
 			req.getRequestDispatcher("employees.jsp").forward(req, resp);
 			return;
 		}
 		if("lessThanSal".equals(searchBy)) {
-			req.setAttribute("emps", dao.getEmpBySalary(searchBy, Integer.parseInt(search)));
+			req.setAttribute("emps", empService.getEmpBySalary(searchBy, Integer.parseInt(search)));
 			req.getRequestDispatcher("employees.jsp").forward(req, resp);
 			return;
 		}
 		if("greaterThanExp".equals(searchBy)) {
-			req.setAttribute("emps", dao.getEmpByExperience(searchBy, Integer.parseInt(search)));
+			req.setAttribute("emps", empService.getEmpByExperience(searchBy, Integer.parseInt(search)));
 			req.getRequestDispatcher("employees.jsp").forward(req, resp);
 			return;
 		}
 		if("lessThanExp".equals(searchBy)) {
-			req.setAttribute("emps", dao.getEmpByExperience(searchBy, Integer.parseInt(search)));
+			req.setAttribute("emps", empService.getEmpByExperience(searchBy, Integer.parseInt(search)));
 			req.getRequestDispatcher("employees.jsp").forward(req, resp);
 			return;
 		}
 		if("greaterThanAge".equals(searchBy)) {
-			req.setAttribute("emps", dao.getEmpByAge(searchBy, Integer.parseInt(search)));
+			req.setAttribute("emps", empService.getEmpByAge(searchBy, Integer.parseInt(search)));
 			req.getRequestDispatcher("employees.jsp").forward(req, resp);
 			return;
 		}
 		if("lessThanAge".equals(searchBy)) {
-			req.setAttribute("emps", dao.getEmpByAge(searchBy, Integer.parseInt(search)));
+			req.setAttribute("emps", empService.getEmpByAge(searchBy, Integer.parseInt(search)));
 			req.getRequestDispatcher("employees.jsp").forward(req, resp);
 			return;
 		}
 		if("greaterThanLevel".equals(searchBy)) {
-			req.setAttribute("emps", dao.getEmpByLevel(searchBy, Integer.parseInt(search)));
+			req.setAttribute("emps", empService.getEmpByLevel(searchBy, Integer.parseInt(search)));
 			req.getRequestDispatcher("employees.jsp").forward(req, resp);
 			return;
 		}
 		if("lessThanLevel".equals(searchBy)) {
-			req.setAttribute("emps", dao.getEmpByLevel(searchBy, Integer.parseInt(search)));
+			req.setAttribute("emps", empService.getEmpByLevel(searchBy, Integer.parseInt(search)));
 			req.getRequestDispatcher("employees.jsp").forward(req, resp);
 			return;
 		}
 		if("name".equals(searchBy)) {
-			req.setAttribute("emps", dao.getEmpByName(search));
+			req.setAttribute("emps", empService.getEmpByName(search));
 			req.getRequestDispatcher("employees.jsp").forward(req, resp);
 			return;
 		}

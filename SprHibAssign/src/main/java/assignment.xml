@@ -14,6 +14,12 @@
 	<p:bean class="spring.assignment.CustomerHibernateDAOImpl"></p:bean>
 	
 	<p:bean class="spring.assignment.ItemHibernateDAOImpl"></p:bean>
+	
+	<p:bean class="spring.assignment.OrderHibernateDAOImpl"></p:bean>
+	
+	<p:bean class="spring.assignment.LineItemHibernateDAOImpl"></p:bean>
+	
+	<p:bean class="spring.assignment.OrderServiceImpl"></p:bean>
 
 	<p:bean autowire="no"
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
@@ -21,6 +27,9 @@
 			<p:list>
 				<p:value>spring.assignment.Customer</p:value>
 				<p:value>spring.assignment.Item</p:value>
+				<p:value>spring.assignment.Order</p:value>
+				<p:value>spring.assignment.LineItem</p:value>
+				
 				
 			</p:list>
 		</p:property>
