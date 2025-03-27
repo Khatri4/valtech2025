@@ -13,6 +13,11 @@ import com.valtech.training.assignment5loanmang.webservices.LoanServiceWS;
 @SpringBootTest
 class Assignment5LoanMangClientApplicationTests {
 	
+	
+	
+	/*
+	 * Test case is not running in this but from terminal it is running using mvn clean test command
+	 */
 	@Autowired
 	private LoanServiceWS loanServiceWS;
 
