@@ -30,7 +30,7 @@ public class Customer {
 	private String name;
 	private int age;
 	private String address;
-	private String per_address;
+	private String permanentAddress;
 	
 	
 	@Enumerated(EnumType.STRING)
@@ -50,7 +50,7 @@ public class Customer {
 		this.name = name;
 		this.age = age;
 		this.address = address;
-		this.per_address = per_address;
+		this.permanentAddress = per_address;
 		this.cusStatus = CustomerStatus.ENABLE;
 	}
 	
@@ -65,7 +65,7 @@ public class Customer {
 	@Override
 	public String toString() {
 		return "Customer [cusId=" + cusId + ", name=" + name + ", age=" + age + ", address=" + address
-				+ ", per_address=" + per_address + ", cusStatus=" + cusStatus + ", orders=" + orders + "]";
+				+ ", per_address=" + permanentAddress + ", cusStatus=" + cusStatus + ", orders=" + orders + "]";
 	}
 	public CustomerStatus getCusStatus() {
 		return cusStatus;
@@ -99,11 +99,11 @@ public class Customer {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getPer_address() {
-		return per_address;
+	public String getPermanentAddress() {
+		return permanentAddress;
 	}
-	public void setPer_address(String per_address) {
-		this.per_address = per_address;
+	public void setPermanentAddress(String per_address) {
+		this.permanentAddress = per_address;
 	}
 	
 	public Set<Order> getOrders() {

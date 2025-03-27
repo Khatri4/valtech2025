@@ -82,18 +82,33 @@ public class CustomerTest {
 //		o.setStatus(Status.IN_WAREHOUSE);
 		
 		
-		
+//		Customer c4 = new Customer("Pandu", 36, "Vadodara", "Dubai");
+//		c4.setCusStatus(CustomerStatus.DISABLE);
 		
 		
 		
 //		os.save(o);
 //		
-		Customer c7 = new Customer("Sheryas", 41, "Mumbai", "Dubai");
-		c7.setCusStatus(CustomerStatus.DISABLE);
-		csh.save(c7);
+//		Customer c7 = new Customer("Sheryas", 41, "Mumbai", "Dubai");
+//		c7.setCusStatus(CustomerStatus.DISABLE);
+//		csh.save(c7);
+//		
 		
+		LineItem li = new LineItem();
+		li.setItem(is.get(1));
+		li.setQuantity(100);
 		
+		Customer c9 = cs.get(15);
 		
+		Order o = new Order();
+		o.setCustomer(c9);
+		o.addLineItem(li);
+//		o.addLineItem(li1);
+//		o.addLineItem(li2);
+		o.setStatus(Status.IN_WAREHOUSE);
+		
+		os.save(o);
+
 		
 //		System.out.println(cs.getClass().getName());
 //		Customer customer=cs.get(1);

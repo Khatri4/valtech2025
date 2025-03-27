@@ -50,7 +50,6 @@ private OrderHibernateDAO orderDAO;
 				valid = false;
 				o.setStatus(Status.REJECTED);
 				orderDAO.save(o);
-				System.out.println("Quality surpassed");
 				break;	
 				
 			}
@@ -70,17 +69,12 @@ private OrderHibernateDAO orderDAO;
 				if(item.getQuantity() == 0) {
 					resetInventory(item);
 				}				
-//				o.setStatus(Status.REJECTED);
  
 			}			
 		}
 	}
 		
 		
-//		orderDAO.save(o);
-		
-	
-
 	@Override
 	public void update(Order o) {
 		orderDAO.update(o);
