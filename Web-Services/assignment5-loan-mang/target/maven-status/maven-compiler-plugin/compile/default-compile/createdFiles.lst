@@ -1,0 +1,11 @@
+com/valtech/training/assignment5loanmang/repos/LoanRepo.class
+com/valtech/training/assignment5loanmang/vos/LoanVO.class
+com/valtech/training/assignment5loanmang/webservices/LoanServiceWSImpl.class
+com/valtech/training/assignment5loanmang/entities/Loan$LoanStatus.class
+com/valtech/training/assignment5loanmang/services/LoanService.class
+com/valtech/training/assignment5loanmang/entities/Loan.class
+com/valtech/training/assignment5loanmang/webservices/LoanServiceWS.class
+com/valtech/training/assignment5loanmang/config/WebServiceConfig.class
+com/valtech/training/assignment5loanmang/entities/Loan$LoanType.class
+com/valtech/training/assignment5loanmang/Assignment5LoanMangApplication.class
+com/valtech/training/assignment5loanmang/services/LoanServiceImpl.class
