@@ -1,0 +1,11 @@
+/Users/indrajeet.khatri/eclipse-workspace/gitdemo/result-service/src/main/java/com/valtech/training/resultservice/ResultServiceApplication.java
+/Users/indrajeet.khatri/eclipse-workspace/gitdemo/result-service/src/main/java/com/valtech/training/resultservice/controllers/ResultController.java
+/Users/indrajeet.khatri/eclipse-workspace/gitdemo/result-service/src/main/java/com/valtech/training/resultservice/entities/Result.java
+/Users/indrajeet.khatri/eclipse-workspace/gitdemo/result-service/src/main/java/com/valtech/training/resultservice/repos/ResultRepo.java
+/Users/indrajeet.khatri/eclipse-workspace/gitdemo/result-service/src/main/java/com/valtech/training/resultservice/services/QuestionClient.java
+/Users/indrajeet.khatri/eclipse-workspace/gitdemo/result-service/src/main/java/com/valtech/training/resultservice/services/QuizClient.java
+/Users/indrajeet.khatri/eclipse-workspace/gitdemo/result-service/src/main/java/com/valtech/training/resultservice/services/ResultService.java
+/Users/indrajeet.khatri/eclipse-workspace/gitdemo/result-service/src/main/java/com/valtech/training/resultservice/services/ResultServiceImpl.java
+/Users/indrajeet.khatri/eclipse-workspace/gitdemo/result-service/src/main/java/com/valtech/training/resultservice/vos/QuestionVO.java
+/Users/indrajeet.khatri/eclipse-workspace/gitdemo/result-service/src/main/java/com/valtech/training/resultservice/vos/QuizVO.java
+/Users/indrajeet.khatri/eclipse-workspace/gitdemo/result-service/src/main/java/com/valtech/training/resultservice/vos/ResultVO.java

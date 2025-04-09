@@ -1,0 +1,11 @@
+com/valtech/training/resultservice/services/QuestionClient.class
+com/valtech/training/resultservice/controllers/ResultController.class
+com/valtech/training/resultservice/repos/ResultRepo.class
+com/valtech/training/resultservice/vos/QuizVO.class
+com/valtech/training/resultservice/ResultServiceApplication.class
+com/valtech/training/resultservice/services/ResultServiceImpl.class
+com/valtech/training/resultservice/services/ResultService.class
+com/valtech/training/resultservice/vos/ResultVO.class
+com/valtech/training/resultservice/services/QuizClient.class
+com/valtech/training/resultservice/entities/Result.class
+com/valtech/training/resultservice/vos/QuestionVO.class

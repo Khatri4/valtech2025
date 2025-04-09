@@ -1,0 +1,9 @@
+/Users/indrajeet.khatri/eclipse-workspace/gitdemo/assignment5-loan-mang/src/main/java/com/valtech/training/assignment5loanmang/Assignment5LoanMangApplication.java
+/Users/indrajeet.khatri/eclipse-workspace/gitdemo/assignment5-loan-mang/src/main/java/com/valtech/training/assignment5loanmang/services/LoanServiceImpl.java
+/Users/indrajeet.khatri/eclipse-workspace/gitdemo/assignment5-loan-mang/src/main/java/com/valtech/training/assignment5loanmang/services/LoanService.java
+/Users/indrajeet.khatri/eclipse-workspace/gitdemo/assignment5-loan-mang/src/main/java/com/valtech/training/assignment5loanmang/webservices/LoanServiceWSImpl.java
+/Users/indrajeet.khatri/eclipse-workspace/gitdemo/assignment5-loan-mang/src/main/java/com/valtech/training/assignment5loanmang/config/WebServiceConfig.java
+/Users/indrajeet.khatri/eclipse-workspace/gitdemo/assignment5-loan-mang/src/main/java/com/valtech/training/assignment5loanmang/repos/LoanRepo.java
+/Users/indrajeet.khatri/eclipse-workspace/gitdemo/assignment5-loan-mang/src/main/java/com/valtech/training/assignment5loanmang/entities/Loan.java
+/Users/indrajeet.khatri/eclipse-workspace/gitdemo/assignment5-loan-mang/src/main/java/com/valtech/training/assignment5loanmang/vos/LoanVO.java
+/Users/indrajeet.khatri/eclipse-workspace/gitdemo/assignment5-loan-mang/src/main/java/com/valtech/training/assignment5loanmang/webservices/LoanServiceWS.java

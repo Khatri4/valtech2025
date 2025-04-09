@@ -1,0 +1,9 @@
+com/valtech/training/quizservice/repos/QuizRepo.class
+com/valtech/training/quizservice/vos/QuestionVO.class
+com/valtech/training/quizservice/controllers/QuizController.class
+com/valtech/training/quizservice/service/QuestionClient.class
+com/valtech/training/quizservice/vos/QuizVO.class
+com/valtech/training/quizservice/service/QuizServiceImpl.class
+com/valtech/training/quizservice/service/QuizService.class
+com/valtech/training/quizservice/entities/Quiz.class
+com/valtech/training/quizservice/QuizServiceApplication.class
